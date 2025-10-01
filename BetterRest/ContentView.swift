@@ -12,6 +12,8 @@ struct ContentView: View {
     @State private var wakeUp = defaultWakeTime
     @State private var sleepAmount = 8.0
     @State private var coffeeAmount = 1
+    
+    @State private var recommendedBedtime = "-"
 
     @State private var alertTitle = ""
     @State private var alertMessage = ""
@@ -27,6 +29,12 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             Form {
+                Section("Recommended Bedtime") {
+                    Text(recommendedBedtime)
+                        .font(.system(size: 44, weight: .bold))
+                        .frame(maxWidth: .infinity, alignment: .center)
+                }
+                
                 Section("When do you want to wake up?") {
 
                     DatePicker(
@@ -59,14 +67,19 @@ struct ContentView: View {
                 }
             }
             .navigationBarTitle("BetterRest")
-            .toolbar {
-                Button("Calculate", action: calculateBedtime)
-            }
-            .alert(alertTitle, isPresented: $showingAlert) {
-                Button("OK") {}
-            } message: {
-                Text(alertMessage)
-            }
+            .onAppear(perform: calculateBedtime)
+            .onChange(of: wakeUp) { _ in calculateBedtime() }
+            .onChange(of: sleepAmount) { _ in calculateBedtime() }
+            .onChange(of: coffeeAmount) { _ in calculateBedtime() }
+            
+//            .toolbar {
+//                Button("Calculate", action: calculateBedtime)
+//            }
+//            .alert(alertTitle, isPresented: $showingAlert) {
+//                Button("OK") {}
+//            } message: {
+//                Text(alertMessage)
+//            }
         }
     }
 
@@ -89,9 +102,8 @@ struct ContentView: View {
             )
 
             let sleepTime = wakeUp - prediction.actualSleep
-
-            alertTitle = "Your ideal bedtime is..."
-            alertMessage = sleepTime.formatted(date: .omitted, time: .shortened)
+            
+            recommendedBedtime = sleepTime.formatted(date: .omitted, time: .shortened)
         } catch {
             alertTitle = "Error"
             alertMessage =
