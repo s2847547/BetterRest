@@ -6,7 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		042A40392E8CB0BA0014E81D /* Review for Project 3 - BetterRest.png in Resources */ = {isa = PBXBuildFile; fileRef = 042A40332E8CB0BA0014E81D /* Review for Project 3 - BetterRest.png */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		042A40332E8CB0BA0014E81D /* Review for Project 3 - BetterRest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Review for Project 3 - BetterRest.png"; sourceTree = "<group>"; };
 		04F436722E8C83B100D69B1E /* BetterRest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BetterRest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -34,6 +39,7 @@
 			children = (
 				04F436742E8C83B100D69B1E /* BetterRest */,
 				04F436732E8C83B100D69B1E /* Products */,
+				042A40332E8CB0BA0014E81D /* Review for Project 3 - BetterRest.png */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,6 +115,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				042A40392E8CB0BA0014E81D /* Review for Project 3 - BetterRest.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
